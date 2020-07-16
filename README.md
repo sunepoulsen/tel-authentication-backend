@@ -1,2 +1,3 @@
-# tel-authentication-backend
+# TEL Authentication Backend
+
 Authentication backend for Tech Enterprise Labs
