@@ -1,5 +1,23 @@
 version: "2"
 services:
+  tel-ldap-service:
+    image: osixia/openldap:1.1.8
+    environment:
+      - LDAP_ORGANISATION=Tech Enterprise Labs
+      - LDAP_DOMAIN=sunepoulsen.dk
+    ports:
+      - "389"
+      - "636"
+
+  tel-ldap-admin-ui:
+    image: osixia/phpldapadmin:0.9.0
+    environment:
+      - PHPLDAPADMIN_LDAP_HOSTS=ldap-host
+    ports:
+      - "443"
+    links:
+      - "tel-ldap-service:ldap-host"
+
   tel-authentication-service:
     image: tel-authentication-backend-service:1.0.0-SNAPSHOT
     environment:
